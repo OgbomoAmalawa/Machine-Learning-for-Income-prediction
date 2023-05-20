@@ -10,18 +10,21 @@ def get_requirements(file_path: str) -> List[str]:
     '''
     requirements = []
     with open(file_path) as file_obj:
-        requirements_txt = file_obj.readline()
-        requirements = [req.replace("\n", "") for req in requirements_txt]
+        requirements = file_obj.readlines()
+        requirements = [req.replace("\n", "") for req in requirements]
 
         if HYPEN_E_DOT in requirements:
             requirements.remove(HYPEN_E_DOT)
 
+    return requirements
+
 
 setup(
-    name="Machine-Learning-for-Income-prediction",
-    version="0.0.1",
-    author="Amalawa Ogbomo",
-    author_email="aoogbomo@gmail.com",
+    name='Machine-Learning-for-Income-prediction',
+    version='0.0.1',
+    author=' Amalawa Ogbomo',
+    author_email='aoogbomo@gmail.com',
     packages=find_packages(),
-    install_requires=get_requirements("requirements.txt")
+    install_requires=get_requirements('requirements.txt')
+
 )
